@@ -1,3 +1,10 @@
+/* ----- colors ----- */
+    /* color-orange-primary: #e57e22; */
+   /* color-orange-secondary: #cf6d17; */
+
+/* ******************************************************************* */
+/* ----- INITIAL SETUP ----- */
+/* ******************************************************************* */
 *{
     box-sizing: border-box;
     padding: 0;
@@ -11,11 +18,164 @@ html{
     color: #333;
 }
 
+/* ******************************************************************* */
+/* ----- REUSABLE CONTENT ----- */
+/* ******************************************************************* */
 
+section{
+    padding: 8rem 0;
+}
+
+h1,
+h2,
+h3{
+    font-weight:300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
 h1{
     font-size: 5rem;
+    word-spacing: 1rem;
+
 }
+
+h2{
+    font-size: 4rem;
+    word-spacing: 0.3rem;
+    margin: 2rem auto;
+}
+
+
+
+h2:after{
+    display: block;
+    height: 2px;
+    background-color: #e57e22;
+    content: " ";
+    width: 10rem;
+    margin: 2rem auto;
+}
+
+h3{
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    word-spacing: 0.2rem;
+    text-align: center;
+}
+p{
+    font-weight: 300;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+}
+
+ul{
+    list-style-type: none;
+}
+
+/* rows */
+
+.row{
+    display: flex;
+    justify-content: center;
+}
+
+.row-boxes{
+   display: flex; 
+   justify-content: space-between;
+}
+
+.long-text{
+    font-size: 2rem; 
+    word-spacing: .2rem;
+    font-weight: 300;
+    width: 70%;
+    line-height: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.box{
+    margin: 0 3rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fafafa;
+    border-radius: 10px;
+}
+
+/* icons */
+.icon-big{
+    color: #e57e22;
+    font-size: 5rem;
+    margin-bottom: 2rem;
+}
+
+/* links */
+a:link,
+a:visited{
+    font-size: 2rem;
+    color: #e57e22;
+    text-decoration: none;
+    padding-bottom: 1px;
+    transition: color 0.2s;
+}
+
+a:hover,
+a:active{
+    color: #555;
+    border-bottom: 1px solid transparent;
+}
+
+/* ----- buttons ----- */
+.btn:link,
+.btn:visited,
+input[type=submit]{
+    font-size: 3rem;
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: 300;
+    text-decoration: none;
+    border-radius: 200px;
+    color: #fff;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+
+.btn-full:link,
+.btn-full:visited,
+input[type=submit]{
+    background-color: #e67e22;
+    border: 1px solid #e57e22;
+    color: #fff;
+    margin-right: 1.5rem;
+}
+
+.btn-ghost:link,
+.btn-ghost:visited{
+    border: 1px solid #e57e22;
+    color: #e57e22;
+}
+
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active{
+   background-color: #cf6d17;
+}
+
+.btn-full:hover,
+.btn-full:active{
+    border: 1px solid #cf6d17;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active{
+    border: 1px solid #cf6d17;
+    color: #fff;
+}
+
+
 
 /* ******************************************************************* */
 /* ----- NAVBAR ----- */
@@ -30,59 +190,110 @@ h1{
     top: 0;
     left: 0;
     z-index: 9999;
-    background: rgba(238, 238, 238, 0.8);
+    background: rgba(238, 238, 238, 1);
     width: 100%;
 }
 
 .navbar__logo, 
 .navbar__logo img{
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     height:100%;
     width: auto;
 }
 .navbar__name{
     flex: 1 1 auto;
     margin-left: 1rem;
+    justify-self: left;
 }
-.navbar__name p{
-    font-size: 5rem;
+.navbar__name a p{
+    color: #333;
+    font-size: 3rem;
     font-weight: 400;
-    text-transform: uppercase;
-    word-spacing: .6rem;
+    line-height: 3rem;
+    /* text-transform: uppercase; */
 }
 
-.nav-menu{
+.nav-icon{
     flex: 1 1 auto;
     font-size: 7rem;
     border-radius: 1rem;
     padding: 3;
-
 }
+
+.nav-menu{
+    width: 100%;
+    background: rgba(238, 238, 238, 1);
+    z-index: 9999;
+    position: fixed;
+    top: 10rem;
+    right: 0;
+    display: none;
+}
+
+.nav-menu ul li{
+    margin: 2rem;
+}
+
 /* ******************************************************************* */
 /* ----- HEADER SECTION ----- */
 /* ******************************************************************* */
 
 header{
     background: linear-gradient( to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(../img/hero_background.jpg);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     height: 100vh;
     background-size: cover;
     background-position: center;
-    margin: 0 auto;
+    background-attachment: fixed;
+    margin: 10rem auto 0 auto;
 }
 
 .hero{
-    margin-top: 30vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .hero__text h1{
+    margin-top: 10rem;
     line-height: 6rem;
     font-weight: 300;
     color: #ddd;
+}
+
+.hero__buttons{
+    padding-top: 8rem;
+}
+
+
+/* ******************************************************************* */
+/* ----- FEATURES ----- */
+/* ******************************************************************* */
+/* used all renewable comoponents */
+
+/* ******************************************************************* */
+/* ----- SHOWCASE ----- */
+/* ******************************************************************* */
+
+.food-showcase_row{
+    display: flex;
+}
+
+.food-showcase_picture{
+    width:25%;
+    height: 30rem;
+    background-color: #000;
+}
+
+.food-showcase_picture img{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+    opacity: .5;
+    transition: opacity 1s;
+}
+
+.food-showcase_picture img:hover{
+    opacity: 1;
 }
 
