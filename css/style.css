@@ -274,6 +274,10 @@ header{
 /* ----- SHOWCASE ----- */
 /* ******************************************************************* */
 
+.food-showcase{
+    padding: 0;
+}
+
 .food-showcase_row{
     display: flex;
 }
@@ -282,6 +286,7 @@ header{
     width:25%;
     height: 30rem;
     background-color: #000;
+    overflow: hidden;
 }
 
 .food-showcase_picture img{
@@ -290,10 +295,147 @@ header{
     object-fit: cover;
     vertical-align: bottom;
     opacity: .5;
-    transition: opacity 1s;
+    transition: opacity 1s, transform 1s;
 }
 
 .food-showcase_picture img:hover{
     opacity: 1;
+    transform: scale(1.2);
 }
 
+/* ******************************************************************* */
+/* ----- HEALTH BENEFITS ----- */
+/* ******************************************************************* */
+.health-benifits{
+   background-color: rgba(238, 238, 238, 1);
+}
+
+.health-benifits_box{
+   display: flex; 
+   flex-direction: column;
+   width: 80%;
+   margin: auto;
+   margin-bottom: 2rem;
+   background-color: #fff;
+   padding: 2rem;
+}
+
+.health-benifits_box:last-child{
+    margin-bottom:0;
+}
+
+.health-benifits_main{
+    display: flex;
+}
+
+.health-benifits_img{
+    overflow: hidden;
+    padding: 0 2rem;
+    flex: 0 0 20%;
+}
+
+.health-benifits_img img{
+    height: 20rem;
+    width: 20rem;
+    border-radius: 5px;
+    object-fit: cover;
+    vertical-align: bottom;
+}
+
+.health-benifits_content{
+    padding: 2rem;
+    flex: 0 0 80%;
+}
+
+.health-benifits_box h3{
+    text-transform: capitalize;
+    border-bottom: 1px solid #333;
+}
+
+
+/* ******************************************************************* */
+/* ----- TESTIMONIALS ----- */
+/* ******************************************************************* */
+.testimonials{
+    background-color: black;
+    color: white;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, .6)), url(../img/testimonial-background.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+.testimonials_box{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    padding: 2rem 10rem;
+    line-height: 3rem;
+    font-weight: 300;
+}
+
+blockquote{
+    font-size: 2rem;
+    font-style: italic;
+}
+
+cite{ 
+    display: block;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+cite img{
+    border-radius: 50%;
+    width: 5rem;
+    margin-right: .5rem;
+}
+
+/* ******************************************************************* */
+/* ----- PLANS ----- */
+/* ******************************************************************* */
+.plans{
+   background-color: rgba(238, 238, 238, 1);
+}
+.plans_box{
+    padding: 2rem;
+}
+.plans_box div{
+    padding: 2rem 2rem;
+    background-color: #fff;
+    margin-bottom: .2rem;
+    width: 30rem;
+}
+.plans_box div:first-child{
+    margin-bottom: 0;
+}
+
+.plans_title h3{
+    font-size: 3rem;
+}
+
+.plans_price p{
+    font-size: 4rem;
+    color: #e57e22;
+    text-align: center;
+}
+
+.plans_price span{
+    font-size: 2rem;
+    color: #333;
+}
+
+.plans_description{
+    font-size: 1.4rem;
+}
+
+.plans_button{
+    text-align: center;
+}
+
+.plans_button .btn{
+    width: 18rem;
+}
