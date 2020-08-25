@@ -1,33 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <title>We Kneed Sourdough</title>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="navbar__logo">
-            <a href="#">
-                <img src="img/logo.png" alt="we kneed sourdough logo">
-            </a>
-        </div>
-        <div class="navbar__name">
-            <a href="#"><p>We<br>Kneed<br>Sourdough</p></a>
-        </div>
-        <div class="navbar__navigation">
-            <ion-icon class="nav-icon js--nav-icon" name="menu-outline"></ion-icon>
-        </div>
-    </nav>
-    <div class="nav-menu js--nav-menu">
-        <ul class="nav-menu__links js--main-nav">
-            <li><a href="#">link</a></li>
-            <li><a href="#">link</a></li>
-            <li><a href="#">link</a></li>
-       </ul>
-    </div>
+<?php include 'reusable_pages/navbar.php'; ?>
     <header>
         <div class="hero">
             <div class="hero__text">
@@ -224,42 +195,8 @@
                     </div>
                 </div>
             </div>
-            
         </section>
-               <footer class="footer">
-            <div class="footer_row">
-                <div class="footer_links">
-                    <ul class="footer-nav">
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Sources</a></li>
-                    </ul>
-                </div>
-                <div class="footer_social">
-                    <ul class="social-links">
-                        <li><a href="#"><ion-icon class="logo-facebook" name="logo-facebook"></ion-icon></a></li>
-                        <li><a href="#"><ion-icon class="logo-twitter" name="logo-twitter"></ion-icon></a></li>
-                        <li><a href="#"><ion-icon class="logo-instagram" name="logo-instagram"></ion-icon></a></li>
-                        <li><a href="#"><ion-icon class="logo-snapchat" name="logo-snapchat"></ion-icon></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <p>
-                    Copyright &copy; 2020 We need sourdough. All rights reserved.
-                </p>
-            </div>
-        </footer>
-
-    <!-- icons -->
-    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-    <!-- jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <!-- custom script -->
-    <script src="js/script.js"></script>
-
-</body>
-</html>
-
+<?php include 'reusable_pages/footer.php'; ?>
 
 
 <!-- <span>Photo by <a href="https://unsplash.com/@empowers_photography?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Emily Austin</a> on <a href="https://unsplash.com/s/photos/pizza-oven?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span> -->
