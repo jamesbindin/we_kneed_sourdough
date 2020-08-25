@@ -5,6 +5,7 @@
 /* ******************************************************************* */
 /* ----- INITIAL SETUP ----- */
 /* ******************************************************************* */
+
 *{
     box-sizing: border-box;
     padding: 0;
@@ -16,6 +17,7 @@ html{
     font-size: 62.5%;
     font-family: 'Lato', 'sans-serif';
     color: #333;
+    scroll-behavior: smooth;
 }
 
 /* ******************************************************************* */
@@ -45,8 +47,6 @@ h2{
     word-spacing: 0.3rem;
     margin: 2rem auto;
 }
-
-
 
 h2:after{
     display: block;
@@ -218,6 +218,7 @@ input[type=submit]:active{
     font-size: 7rem;
     border-radius: 1rem;
     padding: 3;
+    cursor: pointer;
 }
 
 .nav-menu{
@@ -233,6 +234,7 @@ input[type=submit]:active{
 .nav-menu ul li{
     margin: 2rem;
 }
+
 
 /* ******************************************************************* */
 /* ----- HEADER SECTION ----- */
@@ -438,4 +440,90 @@ cite img{
 
 .plans_button .btn{
     width: 18rem;
+}
+
+/* -------------------------------------------------------------- */
+/* FOOTER */
+/* -------------------------------------------------------------- */
+
+footer{
+    background-color: #333;
+    padding: 60px;
+    font-size: 80%;
+}
+.footer_row{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.footer_links{
+    justify-self: start;
+}
+
+.footer-nav li,
+.social-links li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer-nav{
+    list-style: none;
+}
+
+.social-links{
+    list-style: none;
+    font-size: 2rem;
+}
+
+.footer-nav li:last-child,
+.social-links li:last-child{
+    margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited{
+    text-decoration: none;
+    border: 0;
+    color: #888;
+    transition: 0.2s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active{
+    color: #ddd;
+}
+
+.social-links li a:link,
+.social-links li a:visited{
+    font-size: 160%;
+}
+
+.logo-facebook,
+.logo-twitter,
+.logo-instagram,
+.logo-snapchat{
+    transition: color 0.2s;
+}
+
+.logo-facebook:hover{
+    color: #3b5998;
+}
+
+.logo-twitter:hover{
+    color: #1da1f2;
+}
+
+.logo-instagram:hover{
+    color:#c32aa3;
+}
+
+.logo-snapchat:hover{
+   color: #fffc00; 
+}
+footer p{
+    color: #888;
+    text-align: center;
 }
