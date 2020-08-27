@@ -127,20 +127,11 @@ a:active{
     color: #555;
     border-bottom: 1px solid transparent;
 }
-
 /* ----- buttons ----- */
-.btn:link,
-.btn:visited,
-input[type=submit]{
-    font-size: 3rem;
-    display: inline-block;
-    padding: 10px 30px;
-    font-weight: 300;
-    text-decoration: none;
-    border-radius: 200px;
-    color: #fff;
-    transition: background-color 0.2s, border 0.2s, color 0.2s;
-}
+
+
+
+
 
 .btn-full:link,
 .btn-full:visited,
@@ -149,6 +140,13 @@ input[type=submit]{
     border: 1px solid #e57e22;
     color: #fff;
     margin-right: 1.5rem;
+    text-align: center;
+    line-height: normal;
+}
+
+.btn-full:hover,
+.btn-full:active{
+    border: 1px solid #cf6d17;
 }
 
 .btn-ghost:link,
@@ -157,24 +155,78 @@ input[type=submit]{
     color: #e57e22;
 }
 
-.btn:hover,
-.btn:active,
-input[type=submit]:hover,
-input[type=submit]:active{
-   background-color: #cf6d17;
-}
-
-.btn-full:hover,
-.btn-full:active{
-    border: 1px solid #cf6d17;
-}
-
 .btn-ghost:hover,
 .btn-ghost:active{
     border: 1px solid #cf6d17;
     color: #fff;
 }
 
+.btn:link,
+.btn:visited,
+input[type=submit]{
+    font-size: 3rem;
+    display: inline-block;
+    padding: 1rem;
+    font-weight: 300;
+    text-decoration: none;
+    border-radius: 200px;
+    color: #fff;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active{
+   background-color: #cf6d17;
+} 
+/*----- form -----*/
+form{
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+form .row{
+    margin-bottom: 1rem;
+    justify-content: space-between;
+}
+
+form .row label{
+    font-size: 2rem;
+    width: 20%;
+    text-align: right;
+    margin-right: 2rem;
+}
+
+input[type=submit]{
+    justify-self: start;
+    margin: 0;
+    font-size: 2rem;
+}
+
+
+input[type=text],
+input[type=email],
+input[type=password],
+select,
+textarea{
+    width:100%;
+    padding: 7px; 
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+textarea{
+    resize: vertical;
+}
+
+/* input[type=checkbox]{ */
+    /* margin: 10px 5px 10px 0; */
+/* } */
+
+*:focus{outline: none;}
 
 
 /* ******************************************************************* */
@@ -200,6 +252,7 @@ input[type=submit]:active{
     height:100%;
     width: auto;
 }
+
 .navbar__name{
     flex: 1 1 auto;
     margin-left: 1rem;
@@ -526,4 +579,129 @@ footer{
 footer p{
     color: #888;
     text-align: center;
+}
+
+/* -------------------------------------------------------------- */
+/* CREATE ACCOUNT */
+/* -------------------------------------------------------------- */
+
+.create_account{
+    margin-top: 10rem;
+}
+
+/* -------------------------------------------------------------- */
+/* LOGIN */
+/* -------------------------------------------------------------- */
+
+.login{
+    margin-top: 10rem;
+}
+
+/* -------------------------------------------------------------- */
+/* ORDER */
+/* -------------------------------------------------------------- */
+
+.order{
+    margin-top: 5rem;
+}
+
+.item{
+    width: 60%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #333;
+    display: flex;
+    overflow: hidden;
+}
+
+.item__img{
+    height: 30rem;
+    width: auto;
+}
+
+.item__img img{
+    height: 100%;
+}
+ 
+.item__content{
+    background: white;
+    padding: 30px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item__price{
+    background-color: #e57e22;
+    flex: 0 1 5rem;
+    writing-mode: vertical-rl;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+.item__title{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.item_title h3{
+    font-size: 2rem;
+    margin-right: auto;
+}
+
+.item__description{
+    font-size: 1.4rem; 
+}
+
+.item__controls{
+    display: flex;
+    justify-content: left;
+}
+
+/* buttons */
+.item__controls-add:link,
+.item__controls-add:visited,
+.item__controls-add:hover,
+.item__controls-add:active
+
+{
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    font-size: 2rem;
+    color: white;
+    border-color: green;
+    background-color: green;
+    font-size: 2rem;
+}
+
+.item__controls-remove:link,
+.item__controls-remove:visited,
+.item__controls-remove:hover,
+.item__controls-remove:active
+{
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    font-size: 2rem;
+    color: white;
+    border-color: red;
+    background-color: red;
+    font-size: 2rem;
+}  
+
+
+.item__controls div{
+    width: 5rem;
+    height: 5rem;
+    margin-right: 1rem;
+}
+
+.item__controls-add ion-icon,
+.item__controls-remove ion-icon{
+    text-align: center;
+    vertical-align: middle;
 }

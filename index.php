@@ -1,4 +1,4 @@
-<?php include 'reusable_pages/navbar.php'; ?>
+<?php include './pages/reusable/navbar.php'; ?>
     <header>
         <div class="hero">
             <div class="hero__text">
@@ -196,7 +196,7 @@
                 </div>
             </div>
         </section>
-<?php include 'reusable_pages/footer.php'; ?>
+<?php include './pages/reusable/footer.php'; ?>
 
 
 <!-- <span>Photo by <a href="https://unsplash.com/@empowers_photography?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Emily Austin</a> on <a href="https://unsplash.com/s/photos/pizza-oven?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span> -->
