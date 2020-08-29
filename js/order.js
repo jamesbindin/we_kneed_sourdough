@@ -1,11 +1,19 @@
+var a = 1; 
 $(document).ready(function(){
     $('.item__controls-add').click(function(){
-          $.ajax({
-            type: "get", //request type,
-            url:"./php/order.php", //the page containing php script
-            success: function(res){
-                console.log(res);
+        // let data = {'name': 'james'}
+        $.ajax({
+            url : "./php/order_handler.php",
+            type: "POST",
+            // data : data,
+            success: function(data, textStatus, jqXHR)
+            {
+                console.log(data);
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                console.log();
             }
-         })
+        });
     })
 })
