@@ -5,8 +5,9 @@ class DBConnection{
         try {
             $host = "localhost";
             $user = "root";
-            $pass = "";
-        self::$db = $sql=new mysqli($host,$user,$pass);
+            $password = "";
+            $db_name = 'wksd';
+        self::$db = new mysqli($host, $user, $password, $db_name);
         }
         catch (Exception $e) {
             echo $e;

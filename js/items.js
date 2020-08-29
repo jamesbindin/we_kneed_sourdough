@@ -3,13 +3,13 @@ $(document).ready(function(){
     $('.item__controls-add').click(function(){
         // let data = {'name': 'james'}
         $.ajax({
-            url : "./php/order_handler.php",
+            url : "./php/item_handler.php",
             type: "POST",
-            // data : data,
+            data : "items_get_from_db",
             success: function(data, textStatus, jqXHR)
             {
-                // var res = JSON.parse(data);
-                console.log(data);
+                var data_json = JSON.parse(data);
+                console.log(data_json);
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
