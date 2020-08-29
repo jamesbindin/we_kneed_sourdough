@@ -1,6 +1,5 @@
 <?php include 'pages/reusable/navbar.php'; ?>
 <?php include 'php/database/DBconnection.php'; ?>
-<?php include 'php/classes/item.php'; ?>
 <?php include 'php/classes/items.php'; ?>
 <section class="order">
     <div class="row">
@@ -8,13 +7,12 @@
     </div>
 
     <?php
-    // get connection and items from database, store as item object and display
+    // use items class to get list of all items in db, display to user.
     $conn = DBconnection::getInstance();
-    $items = new Items();
-    $items->loadFromDB($conn);
-    $result = $items->getResult();
-    while($row = $result->fetch_assoc()){
-        $item = new Item($row['item_id'], $row['name'], $row['description'], $row['price'], $row['image']);
+    $items_obj = new Items();
+    $items_obj->loadFromDB($conn);
+    $items =$items_obj->getItems();
+    foreach($items as $item){
         ?> 
         <div class="row">
             <div class="item">
@@ -28,13 +26,14 @@
                         <p class="item__description"><?php echo $item->getDescription();?></p>
                         <div class="item__controls">
                             <div>
-                                <a href="#" class="item__controls-add btn btn-full"><ion-icon name="add-outline"></ion-icon></a>
+                                <a href="#" class="item__controls-remove btn btn-full js--remove" id="js--remove_<?php echo $item->getId(); ?>"><ion-icon name="remove-outline"></ion-icon></a>
                             </div>
                             <div>
-                                <a href="#" class="item__controls-remove btn btn-full"><ion-icon name="remove-outline"></ion-icon></a>
+                                <a href="#" class="item__controls-add btn btn-full js--add" id="js--add_<?php echo $item->getId(); ?>"><ion-icon name="add-outline"></ion-icon></a>
                             </div>
-                            <div class="item__controls-quantity">
-                                <p id="quantity_<?php echo $item->getId(); ?>">qty: </p>
+                            <div>
+                                <p class="item__controls-qty">qty: <span id="js--qty_<?php echo $item->getId(); ?>">0</span> </p>
+                                
                             </div>
                         </div>
                     </div>
@@ -47,5 +46,4 @@
 </section>
 <?php include 'pages/reusable/footer.php'; ?>
 
-<!-- <script src="js/order.js"></script> -->
-<!-- <script src="js/items.js"></script> -->
+<script src="js/order.js"></script>

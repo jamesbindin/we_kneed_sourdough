@@ -1,17 +1,25 @@
 <?php
+include 'item.php';
 class Items{
-    private $result;
+    private $items;
 
     public function __construct(){
-        $this->result = NULL;
+        $this->items = array();
     }
 
     public function loadFromDB($conn){
-       $this->result = $conn->query('SELECT * FROM `item`'); 
+        $result= $conn->query('SELECT * FROM `item`'); 
+        while($row = $result->fetch_assoc()){
+            $item = new Item($row['item_id'], $row['name'], $row['description'], $row['price'], $row['image']);
+            array_push($this->items, $item);
+        }
     }
 
-    public function getResult(){
-        return $this->result;
+    public function getItems(){
+        return $this->items;
     }
+
+
+
 }
 ?>
