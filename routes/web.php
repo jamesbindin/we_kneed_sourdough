@@ -19,6 +19,7 @@ Route::get('dashboard', function () {
 
 // Route::get('usersIndex', [UserController::class, 'index']);
 Route::match(['get', 'post'], 'users', [UserController::class, 'create']);
+Route::match(['post'], 'users', [UserController::class, 'store']);
 // Route::get('users{id}', [UserController::class, 'show']);
 // Route::put('users{id}', [UserController::class, 'edit']);
 // Route::delete('users{id}', [UserController::class, 'destroy']);

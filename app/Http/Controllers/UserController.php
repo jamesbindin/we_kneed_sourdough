@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -26,9 +28,23 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        dd('store UserController');      //
+        $request = $request->validate([
+           'name' => 'required|max:50',
+           'email' => 'required|unique:users,email|max:50',
+           'address' => 'required|max:200',
+           'password' => 'required|max:200',
+        ]);
+
+        $user = new User;
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $user->address = $request['address'];
+        $user->password = $request['password'];
+        $user->save();
+
+        return redirect('/');
     }
 
     /**
