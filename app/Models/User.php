@@ -21,6 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'address',
         'password',
     ];
 
@@ -31,9 +32,9 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'two_factor_secret',
-        'two_factor_recovery_codes',
-        'remember_token',
+        // 'two_factor_secret',
+        // 'two_factor_recovery_codes',
+        // 'remember_token',
     ];
 
     /**
@@ -44,9 +45,9 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
+            // 'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'two_factor_confirmed_at' => 'datetime',
+            // 'two_factor_confirmed_at' => 'datetime',
         ];
     }
 }
