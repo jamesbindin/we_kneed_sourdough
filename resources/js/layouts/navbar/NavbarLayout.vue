@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/vue3'
 import { ref } from 'vue';
 
 import { create  as createUser } from '@/actions/App/Http/Controllers/UserController';
-import { create  as createUserSession, destroy as destroyUserSession } from '@/actions/App/Http/Controllers/UserSessionController';
+import { create  as createUserSession} from '@/actions/App/Http/Controllers/UserSessionController';
 import { create  as createOrder, index as indexOrder } from '@/actions/App/Http/Controllers/OrderController';
 
 let navOpen = ref(false);
