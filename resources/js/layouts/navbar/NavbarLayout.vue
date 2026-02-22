@@ -14,7 +14,7 @@
                 </div>
                     <div class="navbar__user">
 
-                        <div v-if="page.props.auth.user.name" class="navbar-user-container"><ion-icon class="icon-user" name="person-circle-outline"></ion-icon><p>{{page.props.auth.user.name}}</p></div>
+                        <div v-if="page.props.auth.user?.name" class="navbar-user-container"><ion-icon class="icon-user" name="person-circle-outline"></ion-icon><p>{{page.props.auth.user.name}}</p></div>
                     </div>
                 <div class="navbar__navigation" @click="navClicked">
                     <ion-icon class="nav-icon js--nav-icon" ref="nav-icon" :name="navOpen ? 'close-outline' : 'menu-outline'"></ion-icon>
@@ -22,12 +22,12 @@
             </nav>
             <div v-if="navOpen" class="nav-menu js--nav-menu">
                 <ul class="nav-menu__links js--main-nav">
-                    <a href="/"><li>Home</li></a>
-                    <a :href="createUserSession().url"><li>Login</li></a>
-                    <a :href="createUser().url"><li>Create account</li></a>
-                    <a :href="createOrder().url"><li>Make order</li></a>
-                    <a :href="indexOrder().url"><li>My orders</li></a>
-                    <!-- <a :href="destroyUserSession().url"><li>Logout</li></a> -->
+                    <Link href="/" as="button"><li>Home</li></Link>
+                    <Link :href="createUserSession().url" as="button"><li>Login</li></Link>
+                    <Link :href="createUser().url" as="button"><li>Create account</li></Link>
+                    <Link :href="createOrder().url" as="button"><li>Make order</li></Link>
+                    <Link :href="indexOrder().url" as="button"><li>My orders</li></Link>
+                    <Link :href="destroyUserSession().url" method="delete"><li>Logout</li></Link>
 
                 </ul>
             </div>
@@ -45,7 +45,7 @@ import { ref } from 'vue';
 import { usePage } from "@inertiajs/vue3";
 
 import { create  as createUser } from '@/actions/App/Http/Controllers/UserController';
-import { create  as createUserSession} from '@/actions/App/Http/Controllers/UserSessionController';
+import { create  as createUserSession, destroy as destroyUserSession} from '@/actions/App/Http/Controllers/UserSessionController';
 import { create  as createOrder, index as indexOrder } from '@/actions/App/Http/Controllers/OrderController';
 
 const page = usePage();
@@ -134,14 +134,22 @@ function navClicked() {
     position: fixed;
     top: 12rem;
     right: 0;
-    /* display: none; */
 }
 
-.nav-menu ul a li{
+.nav-menu__links{
+    display:flex;
+    flex-direction: column;
+    font-size: 2rem;
+    color: #e57e22;
+}
+
+.nav-menu ul button li{
     padding: 2rem;
+    text-align: center;
+    cursor: pointer;
 }
 
-.nav-menu ul a li:hover{
+.nav-menu ul button li:hover{
     background: #e57e22;
     color: white;
 }
