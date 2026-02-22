@@ -2,11 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 class UserSessionController extends Controller
 {
+
+    /**
+     * Handle an authentication attempt.
+     */
+    public function authenticate(Request $request): RedirectResponse
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+ 
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+ 
+            return redirect()->intended('/');
+        }
+ 
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -21,14 +45,12 @@ class UserSessionController extends Controller
     public function create()
     {
         return Inertia::render('session/Login'); 
-
-        // dd('create UserSession');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         dd('store UserSession');
     }

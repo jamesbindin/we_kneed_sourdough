@@ -3,25 +3,30 @@
         <div class="row heading_secondary_top">
             <h2>Login</h2>
         </div>
-            <form action="#" method="post">
+            <Form :action="authenticate().url" method="post">
                 <div class="row">
                     <label for="email" >Email: </label>
-                    <input type="email" placeholder="email" name="email" required>
+                    <input type="email" placeholder="email" name="email">
                 </div>
                 <div class="row">
                     <label for="password">Password: </label>
-                    <input type="password" placeholder="password" name="password" required>
+                    <input type="password" placeholder="password" name="password">
+                    <!-- <div v-if="errors.email">{{ errors.email }}</div> -->
+                    <div v-if="page.props.errors.email">{{ page.props.errors.email }}</div>
                 </div>
                 <div class="form-submit-row">
                     <input type="submit" name="login_submit" value="Login">
-                    <a class="btn btn-ghost" href="./create_account.php">Create account</a>
+                    <!-- <a class="btn btn-ghost" href="./create_account.php">Create account</a> -->
                 </div>
-            </form> 
+            </Form> 
     </section>
 </template>
 
 <script setup lang="ts">
-
+import { Form } from '@inertiajs/vue3';
+import {authenticate} from '@/actions/App/Http/Controllers/UserSessionController';
+import { usePage } from "@inertiajs/vue3";
+let page = usePage();
 </script>
 
 <style scoped>

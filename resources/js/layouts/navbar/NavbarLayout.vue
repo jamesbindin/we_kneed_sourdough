@@ -1,18 +1,3 @@
-<script setup lang="ts">
-import { Link } from '@inertiajs/vue3'
-import { ref } from 'vue';
-
-import { create  as createUser } from '@/actions/App/Http/Controllers/UserController';
-import { create  as createUserSession} from '@/actions/App/Http/Controllers/UserSessionController';
-import { create  as createOrder, index as indexOrder } from '@/actions/App/Http/Controllers/OrderController';
-
-let navOpen = ref(false);
-
-function navClicked() {
-    navOpen.value = !navOpen.value;
-}
-</script>
-
 <template>
     <main>
         <header>
@@ -28,8 +13,8 @@ function navClicked() {
                     </Link>
                 </div>
                     <div class="navbar__user">
-                        <!-- if logged in show first name -->
-                                <!-- <div class="navbar-user-container"><ion-icon class="icon-user" name="person-circle-outline"></ion-icon><p>/*first name var*/</p></div> -->
+
+                        <div v-if="page.props.auth.user.name" class="navbar-user-container"><ion-icon class="icon-user" name="person-circle-outline"></ion-icon><p>{{page.props.auth.user.name}}</p></div>
                     </div>
                 <div class="navbar__navigation" @click="navClicked">
                     <ion-icon class="nav-icon js--nav-icon" ref="nav-icon" :name="navOpen ? 'close-outline' : 'menu-outline'"></ion-icon>
@@ -43,8 +28,6 @@ function navClicked() {
                     <a :href="createOrder().url"><li>Make order</li></a>
                     <a :href="indexOrder().url"><li>My orders</li></a>
                     <!-- <a :href="destroyUserSession().url"><li>Logout</li></a> -->
-{{indexOrder().url}}
-{{createOrder().url}}
 
                 </ul>
             </div>
@@ -55,6 +38,24 @@ function navClicked() {
         </article>
     </main>
 </template>
+
+<script setup lang="ts">
+import { Link } from '@inertiajs/vue3'
+import { ref } from 'vue';
+import { usePage } from "@inertiajs/vue3";
+
+import { create  as createUser } from '@/actions/App/Http/Controllers/UserController';
+import { create  as createUserSession} from '@/actions/App/Http/Controllers/UserSessionController';
+import { create  as createOrder, index as indexOrder } from '@/actions/App/Http/Controllers/OrderController';
+
+const page = usePage();
+
+let navOpen = ref(false);
+
+function navClicked() {
+    navOpen.value = !navOpen.value;
+}
+</script>
 
 <style scoped>
 .navbar{

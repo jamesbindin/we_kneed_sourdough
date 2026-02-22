@@ -13,19 +13,20 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('dashboard', function () {
+//     return Inertia::render('Dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Route::get('usersIndex', [UserController::class, 'index']);
-Route::match(['get', 'post'], 'users', [UserController::class, 'create']);
+Route::match(['get'], 'users', [UserController::class, 'create']);
 Route::match(['post'], 'users', [UserController::class, 'store']);
 // Route::get('users{id}', [UserController::class, 'show']);
 // Route::put('users{id}', [UserController::class, 'edit']);
 // Route::delete('users{id}', [UserController::class, 'destroy']);
 
 // Route::get('userSessionsIndex', [UserSessionController::class, 'index']);
-Route::match(['get', 'post'], 'userSessions', [UserSessionController::class, 'create']);
+Route::match(['get'], 'userSessions', [UserSessionController::class, 'create']);
+Route::match(['post'], 'userSessions', [UserSessionController::class, 'authenticate']);
 // Route::get('userSessions{id}', [UserSessionController::class, 'show']);
 // Route::put('userSessions{id}', [UserSessionController::class, 'edit']);
 // Route::delete('userSessions{id}', [UserSessionController::class, 'destroy']);
@@ -37,4 +38,4 @@ Route::match(['get', 'post'], 'orders', [OrderController::class, 'create']);
 // Route::delete('orders{id}', [OrderController::class, 'destroy']);
 
 
-require __DIR__.'/settings.php';
+// require __DIR__.'/settings.php';
