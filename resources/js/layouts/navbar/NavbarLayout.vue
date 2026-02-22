@@ -20,6 +20,7 @@
                     <ion-icon class="nav-icon js--nav-icon" ref="nav-icon" :name="navOpen ? 'close-outline' : 'menu-outline'"></ion-icon>
                 </div>
             </nav>
+            <div v-if="navOpen" class="nav-menu-underlay" @click="navMenuUnderlayClicked()"></div>
             <div v-if="navOpen" class="nav-menu js--nav-menu">
                 <ul class="nav-menu__links js--main-nav">
                     <Link href="/" as="button"><li>Home</li></Link>
@@ -28,7 +29,6 @@
                     <Link :href="createOrder().url" as="button"><li>Make order</li></Link>
                     <Link :href="indexOrder().url" as="button"><li>My orders</li></Link>
                     <Link :href="destroyUserSession().url" method="delete"><li>Logout</li></Link>
-
                 </ul>
             </div>
             <div class="navbar-spacer"></div>
@@ -54,6 +54,9 @@ let navOpen = ref(false);
 
 function navClicked() {
     navOpen.value = !navOpen.value;
+}
+function navMenuUnderlayClicked() {
+    navOpen.value = false;
 }
 </script>
 
@@ -125,6 +128,10 @@ function navClicked() {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+}
+
+.nav-menu-underlay{
+    @apply w-screen h-screen fixed;
 }
 
 .nav-menu{
