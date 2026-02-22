@@ -26,10 +26,10 @@ Route::match(['post'], 'users', [UserController::class, 'store']);
 
 // Route::get('userSessionsIndex', [UserSessionController::class, 'index']);
 Route::match(['get'], 'userSessions', [UserSessionController::class, 'create']);
-Route::match(['post'], 'userSessions', [UserSessionController::class, 'authenticate']);
+Route::match(['post'], 'userSessions', [UserSessionController::class, 'store']);
 // Route::get('userSessions{id}', [UserSessionController::class, 'show']);
 // Route::put('userSessions{id}', [UserSessionController::class, 'edit']);
-// Route::delete('userSessions{id}', [UserSessionController::class, 'destroy']);
+Route::delete('userSessions', [UserSessionController::class, 'destroy']);
 
 Route::get('ordersIndex', [OrderController::class, 'index']);
 Route::match(['get', 'post'], 'orders', [OrderController::class, 'create']);

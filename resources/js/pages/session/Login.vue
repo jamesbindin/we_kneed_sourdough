@@ -3,7 +3,7 @@
         <div class="row heading_secondary_top">
             <h2>Login</h2>
         </div>
-            <Form :action="authenticate().url" method="post">
+            <Form :action="store().url" method="post">
                 <div class="row">
                     <label for="email" >Email: </label>
                     <input type="email" placeholder="email" name="email">
@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { Form } from '@inertiajs/vue3';
-import {authenticate} from '@/actions/App/Http/Controllers/UserSessionController';
+import {store} from '@/actions/App/Http/Controllers/UserSessionController';
 import { usePage } from "@inertiajs/vue3";
 let page = usePage();
 </script>
