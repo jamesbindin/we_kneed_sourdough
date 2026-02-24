@@ -7,12 +7,12 @@
                 <div class="row">
                     <label for="email" >Email: </label>
                     <input type="email" placeholder="email" name="email">
+                    <div v-if="errors?.email">{{ errors?.email }}</div>
                 </div>
                 <div class="row">
                     <label for="password">Password: </label>
                     <input type="password" placeholder="password" name="password">
-                    <!-- <div v-if="errors.email">{{ errors.email }}</div> -->
-                    <div v-if="page.props.errors.email">{{ page.props.errors.email }}</div>
+                    <div v-if="errors?.password">{{ errors?.password }}</div>
                 </div>
                 <div class="form-submit-row">
                     <input type="submit" name="login_submit" value="Login">
@@ -25,8 +25,11 @@
 <script setup lang="ts">
 import { Form } from '@inertiajs/vue3';
 import {store} from '@/actions/App/Http/Controllers/UserSessionController';
-import { usePage } from "@inertiajs/vue3";
-let page = usePage();
+
+defineProps({
+    errors: {type: Object}
+})
+
 </script>
 
 <style scoped>
