@@ -13,7 +13,6 @@
                     </Link>
                 </div>
                     <div class="navbar__user">
-
                         <div v-if="page.props.auth.user?.name" class="navbar-user-container"><ion-icon class="icon-user" name="person-circle-outline"></ion-icon><p>{{page.props.auth.user.name}}</p></div>
                     </div>
                 <div class="navbar__navigation" @click="navClicked">
