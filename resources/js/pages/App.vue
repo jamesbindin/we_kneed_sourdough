@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Head, Link } from '@inertiajs/vue3';
-import { useTemplateRef, ref} from 'vue';
+// import { Head, Link } from '@inertiajs/vue3';
 
 withDefaults(
     defineProps<{
