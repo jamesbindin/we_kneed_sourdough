@@ -4,7 +4,7 @@
             <nav class="navbar">
                 <div class="navbar__logo">
                     <Link href="/">
-                        <img src="assets/img/logo.png" alt="we kneed sourdough logo"> 
+                        <img src="assets/img/logo.svg" alt="we kneed sourdough logo"> 
                     </Link>
                 </div>
                 <div class="navbar__name">
@@ -39,17 +39,15 @@
 </template>
 
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3'
+import { Link, usePage } from '@inertiajs/vue3'
 import { ref } from 'vue';
-import { usePage } from "@inertiajs/vue3";
 
+import { create  as createOrder, index as indexOrder } from '@/actions/App/Http/Controllers/OrderController';
 import { create  as createUser } from '@/actions/App/Http/Controllers/UserController';
 import { create  as createUserSession, destroy as destroyUserSession} from '@/actions/App/Http/Controllers/UserSessionController';
-import { create  as createOrder, index as indexOrder } from '@/actions/App/Http/Controllers/OrderController';
 
 const page = usePage();
-
-let navOpen = ref(false);
+const navOpen = ref(false);
 
 function navClicked() {
     navOpen.value = !navOpen.value;
