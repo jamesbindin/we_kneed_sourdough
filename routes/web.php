@@ -38,4 +38,4 @@ Route::match(['get', 'post'], 'orders', [OrderController::class, 'create']);
 // Route::delete('orders{id}', [OrderController::class, 'destroy']);
 
 
-// require __DIR__.'/settings.php';
+require __DIR__.'/settings.php';
