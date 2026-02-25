@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -20,7 +21,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return Inertia::render('order/CreateOrder'); 
+        return Inertia::render('order/CreateOrder', [
+            'items' => Item::all(),
+        ]); 
     }
 
     /**
