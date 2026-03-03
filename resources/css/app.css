@@ -337,13 +337,13 @@ a:active{
 /* ----- buttons ----- */
 .btn-full:link,
 .btn-full:visited,
+.btn,
 input[type=submit]{
     font-size: 3rem;
     padding: 1.5rem 2rem;
     background-color: #e67e22;
     border: 1px solid #e57e22;
     color: #fff;
-    margin-right: 1.5rem;
     text-align: center;
     line-height: normal;
 }
@@ -357,7 +357,9 @@ input[type=submit]{
 
 .btn:link,
 .btn:visited,
+.btn,
 input[type=submit]{
+    cursor:pointer;
     font-size: 2rem;
     display: inline-block;
     font-weight: 300;
@@ -482,7 +484,6 @@ textarea{
 *:focus{outline: none;}
 
 .message{
-    display: none;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
