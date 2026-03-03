@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
 use Inertia\Inertia;
 
 class OrderController extends Controller
@@ -31,7 +34,24 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        dd('store OrderController');       //
+        $validated = $request->validate([
+           'items' => 'required|array',
+           'items.*' => 'required|exists:items,id',
+        ]);
+
+        $order = Order::create([
+            'user_id' => Auth::id(),
+        ]);
+
+
+        $order->items()->attach($validated['items']);
+
+        return Inertia::render('order/OrderCreated', [
+            'order' => $order,
+        ]);
+
+        // / $order->user_id = Auth::id();
+
     }
 
     /**
