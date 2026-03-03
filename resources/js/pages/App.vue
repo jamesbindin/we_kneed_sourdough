@@ -231,4 +231,375 @@ withDefaults(
         </section>
 </template>
 
+<style scoped>
+
+section{
+    padding: 8rem 0;
+}
+
+/* ******************************************************************* */
+/* ----- HEADER SECTION ----- */
+/* ******************************************************************* */
+
+.front-page-header{
+    background: -webkit-gradient( linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0))), url(/assets/img/hero_background.jpg);
+    background: -o-linear-gradient( top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)), url(/assets/img/hero_background.jpg);
+    background: linear-gradient( to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)), url(/assets/img/hero_background.jpg);
+    height: calc(100vh - 12rem);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0 auto 0 auto;
+    padding-top: 0;
+}
+
+.hero{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.hero__text h1{
+    margin-top: 10rem;
+    line-height: 6rem;
+    font-weight: 300;
+    color: #ddd;
+}
+
+.hero__buttons{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-top: 8rem;
+}
+
+.hero__buttons a{
+    margin-bottom: 1rem;
+}
+
+/* ******************************************************************* */
+/* ----- FEATURES ----- */
+/* ******************************************************************* */
+/* used all renewable comoponents */
+
+/* ******************************************************************* */
+/* ----- SHOWCASE ----- */
+/* ******************************************************************* */
+
+.food-showcase{
+    padding: 0;
+}
+
+.food-showcase_row{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+}
+
+.food-showcase_picture{
+    height: auto;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.food-showcase_picture img{
+    width:100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    vertical-align: bottom;
+    opacity: .5;
+    -webkit-transition: opacity 1s, -webkit-transform 1s;
+    transition: opacity 1s, -webkit-transform 1s;
+    -o-transition: opacity 1s, transform 1s;
+    transition: opacity 1s, transform 1s;
+    transition: opacity 1s, transform 1s, -webkit-transform 1s;
+}
+
+.food-showcase_picture img:hover{
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+            transform: scale(1.2);
+}
+
+/* ******************************************************************* */
+/* ----- HEALTH BENEFITS ----- */
+/* ******************************************************************* */
+.health-benifits{
+   background-color: rgba(238, 238, 238, 1);
+}
+
+.health-benifits_box{
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex; 
+   -webkit-box-orient: vertical; 
+   -webkit-box-direction: normal; 
+       -ms-flex-direction: column; 
+           flex-direction: column;
+   width: 80%;
+   margin: auto;
+   margin-bottom: 2rem;
+   background-color: #fff;
+   padding: 2rem;
+}
+
+.health-benifits_box:last-child{
+    margin-bottom:0;
+}
+
+.health-benifits_main{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.health-benifits_main.reverse{
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+}
+
+.health-benifits_img{
+    overflow: hidden;
+    height: 30rem;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 30rem;
+            flex: 0 0 30rem;
+    border-radius: 5px;
+}
+
+.health-benifits_img img{
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+}
+
+.health-benifits_content{
+    margin: 0 1rem;
+}
+
+.health-benifits__source{
+    text-align: center;
+    font-size: 1rem;
+}
+
+.health-benifits__source a{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* ******************************************************************* */
+/* ----- TESTIMONIALS ----- */
+/* ******************************************************************* */
+.testimonials{
+    background-color: black;
+    color: white;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, .6))), url(../img/testimonial-background.jpg);
+    background: -o-linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, .6)), url(../img/testimonial-background.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, .6)), url(../img/testimonial-background.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.testimonials_container{
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex; 
+   -webkit-box-pack: space-evenly; 
+       -ms-flex-pack: space-evenly; 
+           justify-content: space-evenly;
+   -ms-flex-wrap: wrap;
+       flex-wrap: wrap;
+}
+
+.testimonials_box{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 20rem;
+            flex: 0 0 20rem;
+    line-height: 2.8rem;
+    font-weight: 300;
+    margin: 1rem;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.testimonials_box blockquote{
+    height: 100%;
+    font-size: 2rem;
+    font-style: italic;
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+
+.testimonials_box blockquote cite{ 
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.testimonials_box blockquote cite img{
+    border-radius: 50%;
+    width: 5rem;
+    margin-right: .5rem;
+}
+
+/* ******************************************************************* */
+/* ----- PLANS ----- */
+/* ******************************************************************* */
+.plans{
+   background-color: rgba(238, 238, 238, 1);
+}
+
+.plans_box_container{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+}
+
+.plans_box{
+    width: 36rem;
+    height: 50rem;
+    margin: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+
+}
+
+/* all child divs in box */
+.plans_box div{
+    background-color: #fff;
+    margin-bottom: .3rem;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.plans_title h3{
+    font-size: 3rem;
+    margin: 0;
+}
+
+.plans_price p{
+    font-size: 4rem;
+    color: #e57e22;
+    text-align: center;
+}
+
+.plans_price span{
+    font-size: 2rem;
+    color: #333;
+}
+
+.plans_description ul{
+    width:100%;
+} 
+
+.plans_description ul li{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.plans_description ul li ion-icon{
+    margin-right: .7rem;
+    font-size: 2rem;
+}
+
+.plans_button{
+    text-align: center;
+}
+
+.plans_button .btn{
+    width: 18rem;
+}
+
+/* media queries */
+@media only screen and (max-width: 980px){
+    .health-benifits_main{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+    }
+    .health-benifits_main.reverse{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+    }
+    .health-benifits_content{
+        margin: 1rem 0;
+    }
+
+}
+</style>
+
 
