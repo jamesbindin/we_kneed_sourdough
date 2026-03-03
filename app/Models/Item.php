@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Database\Eloquent\Attributes\UseFactory;
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,4 +24,12 @@ class Item extends Model
         'price',
         'image',
     ];
+
+    /**
+     * Many to many relationship with orders
+     */
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_item');
+    }
 }
