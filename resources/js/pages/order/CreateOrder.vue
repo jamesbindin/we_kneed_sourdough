@@ -3,50 +3,28 @@
     <div class="row heading_secondary_top">
         <h2>Menu</h2>
     </div>
-
 <div class="items">
               <div v-for="item in items" :key="item.id" class="item">
                 <div class="item__img">
-                    <!-- <img src="<?php echo $item->getImage(); ?>" alt="item_picture"> -->
                     <img :src="'assets/img/items/'+item.image" alt="item_picture">
                 </div>
                     <div class="item__content">
                         <div class="item__title">
-                            <!-- <h3><?php echo $item->getName();?></h3> -->
                             <h3>{{ item.name }}</h3>
                         </div>
-                        <!-- <p class="item__description"><?php echo $item->getDescription();?></p> -->
                         <p class="item__description">{{ item.description }}</p>
                         <div class="item__controls">
-                                <!-- <a href="#" class="item__controls-remove js--remove" id="js--remove_<?php echo $item->getId(); ?>"><ion-icon name="remove-outline"></ion-icon></a> -->
-                                <!-- <a href="#" class="item__controls-add js--add" id="js--add_<?php echo $item->getId(); ?>"><ion-icon name="add-outline"></ion-icon></a> -->
-                                <!-- <p class="item__controls-qty">qty: <span class="js--order_qty" id="js--qty_<?php echo $item->getId(); ?>"><?php echo $context->returnStored(['item_id' => $item->getId()]); ?></span> </p> -->
-                                <div v-on:click="decrementItem(item.id)" class="item__controls-remove js--remove"><ion-icon name="remove-outline"></ion-icon></div>
-                                <div v-on:click="incrementItem(item.id)" class="item__controls-add js--add"><ion-icon name="add-outline"></ion-icon></div>
-                                <p class="item__controls-qty">qty: <span class="js--order_qty" id="">{{itemCounts[item.id] || 0}}</span> </p>
+                                <div v-on:click="removeItem(item.id)" class="item__controls-remove js--remove"><ion-icon name="remove-outline"></ion-icon></div>
+                                <div v-on:click="addItem(item.id)" class="item__controls-add js--add"><ion-icon name="add-outline"></ion-icon></div>
+                                <p class="item__controls-qty">qty: {{itemCounts[item.id] || 0}} </p>
                         </div>
                     </div>
-                <!-- <div class="item__price"><p><?php echo $item->getPrice();?></p></div> -->
                 <div class="item__price"><p>{{ item.price }}</p></div>
             </div>
     <div class="order_submit_row">
         <div class="order_submit_container">
-            <div class="message success js--order_success">
-                <h3>order completed</h3>
-                    <a class="btn btn-full" href="./my_orders.php">my orders</a>
-            </div>
-
-            <div class="order_submit js--order_submit">
-            <!-- <?php -->
-                <!-- if(isset($customer_id)){ -->
-                    <!-- ?> -->
-                    <a value="<?php echo $customer_id; ?>" href="#" class="btn btn-full js--submit_order order_submit__submit_btn">submit order</a>
-                    <!-- <?php -->
-                <!-- } else { -->
-                    <!-- echo '<h3 class="order_submit__login_text">You need to be logged in to submit an order.</h3>'; -->
-                    <!-- echo '<a href="./login.php" class="btn btn-ghost order_submit__login_btn">Login?</a>'; -->
-                <!-- } -->
-            <!-- ?> -->
+            <div class="order_submit">
+                <div @click="submitOrder" class="btn btn-full order_submit__submit_btn">submit order</div>
             </div>
         </div>
     </div>
@@ -56,7 +34,9 @@
 </template>
 
 <script setup lang="ts">
+import { router } from '@inertiajs/vue3'
 import { onMounted, ref } from 'vue';
+import { store as storeOrder } from '@/actions/App/Http/Controllers/OrderController';
 
 
 const props = defineProps({
@@ -67,7 +47,30 @@ const props = defineProps({
     auth: {type: Object}
 })
 
+// const itemCounts = computed(() => {
+//     const counts: { [key: number]: number } = {};
+
+//     selectedItems.forEach((value) => {
+//         if (!counts[value]) {
+//         counts[value] = 1;
+//         } else {
+//         counts[value]++;
+//         }
+//     });
+
+
+
+//     // props.items.forEach((item) => {
+//         // counts[item.id] = selectedItems.value.filter(id => id === item.id).length;
+//     // });
+//     // return counts;
+// });
+onMounted(() => {
+    initItemCounts(props.items);
+})
+
 const itemCounts = ref<{ [key: number]: number }>({});
+const selectedItems = ref<number[]>([]);
 
 function initItemCounts(items: Array<{id: number}>){
     items.forEach((item) => {
@@ -75,21 +78,28 @@ function initItemCounts(items: Array<{id: number}>){
     });
 }
 
-function incrementItem(id: number){
+function addItem(id: number){
+    selectedItems.value.push(id);
     if(itemCounts.value[id] !== undefined){
         itemCounts.value[id]++;
     }
 }
 
-function decrementItem(id: number){
+function removeItem(id: number){
+    selectedItems.value = selectedItems.value.filter(itemId => itemId !== id);
     if(itemCounts.value[id] !== undefined && itemCounts.value[id] > 0){
         itemCounts.value[id]--;
     }
 }
 
-onMounted(() => {
-    initItemCounts(props.items);
-})
+function submitOrder(){
+    router.visit(storeOrder().url, {
+        method: 'post',
+        data: {
+            items: selectedItems.value
+        },
+    })
+}
 
 </script>
 
@@ -193,6 +203,9 @@ onMounted(() => {
         -ms-flex-pack: start;
             justify-content: flex-start;
     margin-top: auto;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
 /* buttons */
