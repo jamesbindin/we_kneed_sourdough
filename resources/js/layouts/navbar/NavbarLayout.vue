@@ -16,24 +16,29 @@
                         <div v-if="page.props.auth.user?.name" class="navbar-user-container"><ion-icon class="icon-user" name="person-circle-outline"></ion-icon><p>{{page.props.auth.user.name}}</p></div>
                     </div>
                 <div class="navbar__navigation" @click="navClicked">
-                    <ion-icon class="nav-icon js--nav-icon" ref="nav-icon" :name="navOpen ? 'close-outline' : 'menu-outline'"></ion-icon>
+                    <ion-icon class="nav-icon" ref="nav-icon" :name="navOpen ? 'close-outline' : 'menu-outline'"></ion-icon>
                 </div>
             </nav>
             <div v-if="navOpen" class="nav-menu-underlay" @click="navMenuUnderlayClicked()"></div>
-            <div v-if="navOpen" class="nav-menu js--nav-menu">
-                <ul class="nav-menu__links js--main-nav">
-                    <Link href="/" as="button"><li>Home</li></Link>
-                    <Link :href="createUserSession().url" as="button"><li>Login</li></Link>
-                    <Link :href="createUser().url" as="button"><li>Create account</li></Link>
-                    <Link :href="createOrder().url" as="button"><li>Make order</li></Link>
-                    <Link :href="indexOrder().url" as="button"><li>My orders</li></Link>
-                    <Link :href="destroyUserSession().url" method="delete"><li>Logout</li></Link>
-                </ul>
-            </div>
+            <Transition name="nav-menu">
+                <div class="nav-menu" v-if="navOpen">
+                    <ul class="nav-menu__links">
+                        <Link @click="navLinkClicked" href="/" as="button"><li>Home</li></Link>
+                        <Link @click="navLinkClicked" :href="createUserSession().url" as="button"><li>Login</li></Link>
+                        <Link @click="navLinkClicked" :href="createUser().url" as="button"><li>Create account</li></Link>
+                        <Link @click="navLinkClicked" :href="createOrder().url" as="button"><li>Make order</li></Link>
+                        <Link @click="navLinkClicked" :href="indexOrder().url" as="button"><li>My orders</li></Link>
+                        <Link @click="navLinkClicked" :href="destroyUserSession().url" method="delete"><li>Logout</li></Link>
+                    </ul>
+                </div>
+            </Transition>
+
             <div class="navbar-spacer"></div>
         </header>
         <article>
-            <slot />
+            <Transition name="fade">
+                <slot />
+            </Transition>   
         </article>
     </main>
 </template>
@@ -51,6 +56,9 @@ const navOpen = ref(false);
 
 function navClicked() {
     navOpen.value = !navOpen.value;
+}
+function navLinkClicked() {
+    navOpen.value = false;
 }
 function navMenuUnderlayClicked() {
     navOpen.value = false;
@@ -128,13 +136,26 @@ function navMenuUnderlayClicked() {
 }
 
 .nav-menu-underlay{
-    @apply w-screen h-screen fixed;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+}
+.nav-menu-enter-active,
+.nav-menu-leave-active {
+    /* transition:opacity 5.3s ease-in-out; */
+    transition: all 0.3s ease;
 }
 
+.nav-menu-enter-from,
+.nav-menu-leave-to {
+  opacity: 0;
+  transform: translateY(-100%);
+}
 .nav-menu{
     width: 100%;
     background: rgba(238, 238, 238, 1);
-    z-index: 9999;
+    z-index: 9998;
     position: fixed;
     top: 12rem;
     right: 0;
@@ -180,6 +201,20 @@ function navMenuUnderlayClicked() {
 
 .navbar-spacer{
     height: 12rem;
+}
+
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: all 1.3s ease;
+}
+.fade-leave-active {
+    transition: none;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
 }
 
 </style>
