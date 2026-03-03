@@ -9,7 +9,9 @@
                 </div>
                 <div class="navbar__name">
                     <Link href="/">
-                        <a href="."><p>We<br>Kneed<br>Sourdough</p></a>
+                        <p>We</p>
+                        <p>Kneed</p> 
+                        <p>Sourdough</p>
                     </Link>
                 </div>
                     <div class="navbar__user">
@@ -94,7 +96,6 @@ function navMenuUnderlayClicked() {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    
 }
 
 .navbar__name a p{

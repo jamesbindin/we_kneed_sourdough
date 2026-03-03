@@ -326,11 +326,6 @@ a:visited{
     transition: color 0.2s;
 }
 
-a:hover,
-a:active{
-    color: #555;
-    border-bottom: 1px solid transparent;
-}
 
 /* ----- buttons ----- */
 .btn-full:link,
@@ -369,19 +364,25 @@ input[type=submit]{
     transition: background-color 0.2s, border 0.2s, color 0.2s;
 }
 
-.btn-ghost:link,
-.btn-ghost:visited{
+.btn.btn-ghost:link,
+.btn.btn-ghost:visited,
+.btn.btn-ghost{
     font-size: 2rem;
     border: 1px solid #e57e22;
     color: #e57e22;
+    background: rgba(255, 255, 255, 0.3); 
     padding: 1.5rem 2rem;
     text-align: center;
 }
 
-.btn-ghost:hover,
-.btn-ghost:active{
+
+
+.btn.btn-ghost:hover,
+.btn.btn-ghost:active
+.btn.btn-ghost{
     font-size: 2rem;
     border: 1px solid #cf6d17;
+    background: #e57e22;
     color: #fff;
     padding: 1.5rem 2rem;
 }
@@ -691,55 +692,17 @@ footer{
 /* media queries */
 @media only screen and (max-width: 980px){
     html{font-size:  60%;}
-    .hero__text h1{font-size: 4rem; word-spacing: .5rem; letter-spacing: .001rem;}
-
     .long-text{width:80%;}
-
-    .health-benifits_main{
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
-    }
-    .health-benifits_main.reverse{
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
-    }
-    .health-benifits_content{
-        margin: 1rem 0;
-    }
-
 }
 
 @media only screen and (max-width: 785px){
     html{font-size:  55%;}
-    .hero__text h1{
-        font-size: 3rem;
-        line-height: 5rem;
-        word-spacing: .5rem;
-        letter-spacing: .0008rem;
-    } 
     h2{font-size: 3rem;}
     h3{font-size: 2rem;}
-
-    .testimonials_box blockquote{
-        font-size: 1.8rem;
-    }
-
-    .plans_title h3{
-        font-size: 2.5rem;
-    }
-
-    .my_orders{
-        width: 90%;
-    }
 }
 
 @media only screen and (max-width: 570px){
     html{font-size:  50%;}
-    .hero__text h1{font-size: 2.5rem; line-height: 4rem; word-spacing: .2rem;}
     h2{font-size: 2.5rem; word-spacing: .001rem;}
     h3{font-size: 1.8rem;}
 
@@ -778,15 +741,7 @@ footer{
 
 @media only screen and (max-width: 410px){
     html{font-size:  45%;}
-    .hero__text h1{line-height: 3.6rem; word-spacing: .2rem; text-align: center;}
     h2{font-size: 2.5rem; text-align: center;}
-
-
-    .testimonials_box{
-        -webkit-box-flex: 0;
-            -ms-flex: 0 0 80%;
-                flex: 0 0 80%;
-    }
 
     .navbar__logo{
         height: 70%;
@@ -813,7 +768,6 @@ footer{
 }
 
 @media only screen and (max-width: 361px){
-    .hero__text h1{font-size: 2.2rem; line-height: 3.4rem; word-spacing: .15rem;}
     h2{font-size: 2.2rem;}
 
     .item{
