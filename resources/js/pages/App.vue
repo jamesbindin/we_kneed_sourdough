@@ -24,8 +24,14 @@ withDefaults(
                 <h1>Delicious sourdough products<br>delivered straight to your door</h1>
             </div>
             <div class="hero__buttons">
-                <a href="" class="btn btn-full">Make order</a>
-                <a href="#" class="btn btn-ghost js--show_more_btn">Show me more</a>
+                <template v-if="page.props.auth.user">
+                    <Link :href="createOrder().url" class="btn btn-full">Create Order</Link>
+                </template>
+                <template v-else>
+                    <Link :href="createUserSession().url" class="btn btn-full">Login</Link>
+                    <Link :href="createUser().url" class="btn btn-ghost">Create account</Link> 
+                </template>
+                <!-- <Link :href="showMore().url" class="btn btn-ghost js--show_more_btn">Show me more</Link> -->
             </div>
         </div>
     </section>
@@ -230,7 +236,13 @@ withDefaults(
             </div>
         </section>
 </template>
+<script lang="ts">
+import { Link, usePage } from '@inertiajs/vue3';
+import { create as createOrder } from '@/actions/App/Http/Controllers/OrderController';
+import { create  as createUserSession, create as createUser } from '@/actions/App/Http/Controllers/UserSessionController';
 
+const page = usePage();
+</script>
 <style scoped>
 
 section{
@@ -283,6 +295,7 @@ section{
         -ms-flex-pack: center;
             justify-content: center;
     padding-top: 8rem;
+    gap: 3rem;
 }
 
 .hero__buttons a{
@@ -583,6 +596,8 @@ section{
 
 /* media queries */
 @media only screen and (max-width: 980px){
+    .hero__text h1{font-size: 4rem; word-spacing: .5rem; letter-spacing: .001rem;}
+
     .health-benifits_main{
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
@@ -600,6 +615,42 @@ section{
     }
 
 }
+
+@media only screen and (max-width: 785px){
+    .hero__text h1{
+        font-size: 3rem;
+        line-height: 5rem;
+        word-spacing: .5rem;
+        letter-spacing: .0008rem;
+    } 
+
+    .testimonials_box blockquote{
+        font-size: 1.8rem;
+    }
+
+    .plans_title h3{
+        font-size: 2.5rem;
+    }
+}
+
+@media only screen and (max-width: 570px){
+    .hero__text h1{font-size: 2.5rem; line-height: 4rem; word-spacing: .2rem;}
+}
+
+@media only screen and (max-width: 410px){
+    .hero__text h1{line-height: 3.6rem; word-spacing: .2rem; text-align: center;}
+
+    .testimonials_box{
+        -webkit-box-flex: 0;
+            -ms-flex: 0 0 80%;
+                flex: 0 0 80%;
+    }
+}
+
+@media only screen and (max-width: 361px){
+    .hero__text h1{font-size: 2.2rem; line-height: 3.4rem; word-spacing: .15rem;}
+}
+
 </style>
 
 
