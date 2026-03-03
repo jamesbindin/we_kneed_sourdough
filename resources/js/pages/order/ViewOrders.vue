@@ -4,6 +4,10 @@
     <div class="row heading_secondary_top">
         <h2>my orders</h2>
     </div>
+    <div v-if="orders?.data.length === 0" class="no-orders">
+        <p>You have no orders yet.</p>
+        <p>Go to the <Link :href="createOrder().url">make order</Link> page to place your first order.</p>
+    </div>
     <InfiniteScroll data="orders">
             <div v-for="order in orders?.data" :key="order.id" class="my_orders">
                 <div class='my_order'>
@@ -31,7 +35,9 @@
 
 <script setup lang="ts">
 import { InfiniteScroll } from '@inertiajs/vue3';
+import { Link } from '@inertiajs/vue3';
 import { onMounted, ref, onBeforeUnmount } from 'vue';
+import { create as createOrder } from '@/actions/App/Http/Controllers/OrderController';
 defineProps({
     orders: {
         type: Object,
@@ -91,6 +97,10 @@ function onResize(){
 </script>
 
 <style scoped>
+.no-orders{
+    text-align: center;
+}
+
 .my_orders{
     display:-webkit-box;
     display:-ms-flexbox;
