@@ -16,7 +16,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return Inertia::render('order/ViewOrders'); 
+        return Inertia::render('order/ViewOrders', [
+            'orders' => Inertia::scroll(fn() => Order::with('items')->orderBy('created_at', 'desc')->where('user_id', Auth::id())->paginate(5))
+        ]); 
     }
 
     /**
