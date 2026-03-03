@@ -47,24 +47,6 @@ const props = defineProps({
     auth: {type: Object}
 })
 
-// const itemCounts = computed(() => {
-//     const counts: { [key: number]: number } = {};
-
-//     selectedItems.forEach((value) => {
-//         if (!counts[value]) {
-//         counts[value] = 1;
-//         } else {
-//         counts[value]++;
-//         }
-//     });
-
-
-
-//     // props.items.forEach((item) => {
-//         // counts[item.id] = selectedItems.value.filter(id => id === item.id).length;
-//     // });
-//     // return counts;
-// });
 onMounted(() => {
     initItemCounts(props.items);
 })
@@ -273,10 +255,10 @@ function submitOrder(){
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    margin-top: 3rem;
+    -webkit-box-align: flex-end;
+        -ms-flex-align: flex-end;
+            align-items: flex-end;
+    margin-bottom: 6rem;
 }
 .order_submit a.btn{
     margin: 0;
