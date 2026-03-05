@@ -22,12 +22,12 @@
                 <div class="item__price"><p>{{ item.price }}</p></div>
             </div>
     <div class="order_submit_row">
-        <div class="order_submit_container">
-            <div class="order_submit">
-                <div @click="submitOrder" class="btn btn-full order_submit__submit_btn">submit order</div>
-            </div>
+        <div class="order_submit">
+            <p class="order_submit__total">Total: {{ calculateTotal() }}</p>
+            <div @click="submitOrder" class="btn btn-full order_submit__submit_btn">submit order</div>
         </div>
     </div>
+    <div class="order_submit_offset"></div>
 </div>
 </section>
 
@@ -72,6 +72,17 @@ function removeItem(id: number){
     if(itemCounts.value[id] !== undefined && itemCounts.value[id] > 0){
         itemCounts.value[id]--;
     }
+}
+
+function calculateTotal(): string{
+    let total = 0;
+    for(const itemId in itemCounts.value){
+        const item = props.items.find(item => item.id === parseInt(itemId));
+        if(item){
+            total += item.price * itemCounts.value[itemId];
+        }
+    }
+    return `£${total.toFixed(2)}`;
 }
 
 function submitOrder(){
@@ -234,6 +245,7 @@ function submitOrder(){
 }  
 
 .order_submit_row{
+    height: 9rem;
     width: 100%;
     margin: auto;
     display: -webkit-box;
@@ -242,23 +254,33 @@ function submitOrder(){
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    position: fixed;;
+    bottom: 0;
+    border-top: solid 1px #ccc;
+    background: rgba(238, 238, 238, 1);
 }
 
-.order_submit_container{
-    width: 50rem;
+.order_submit_offset{
+    height: 9rem;
+    width: 100%;
 }
+
 .order_submit{
+    width: 100%;
+    margin: 0 2rem ;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: flex-end;
-        -ms-flex-align: flex-end;
-            align-items: flex-end;
-    margin-bottom: 6rem;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: space-between;
 }
 .order_submit a.btn{
     margin: 0;
