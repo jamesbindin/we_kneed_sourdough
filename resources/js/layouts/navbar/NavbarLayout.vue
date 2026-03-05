@@ -27,10 +27,10 @@
                     <ul class="nav-menu__links">
                         <Link @click="navLinkClicked" href="/" as="button"><li>Home</li></Link>
                         <Link @click="navLinkClicked" :href="createUserSession().url" as="button"><li>Login</li></Link>
-                        <Link @click="navLinkClicked" :href="createUser().url" as="button"><li>Create account</li></Link>
-                        <Link @click="navLinkClicked" :href="createOrder().url" as="button"><li>Make order</li></Link>
-                        <Link @click="navLinkClicked" :href="indexOrder().url" as="button"><li>My orders</li></Link>
-                        <Link @click="navLinkClicked" :href="destroyUserSession().url" method="delete"><li>Logout</li></Link>
+                        <Link v-if="page.props.auth.user === null" @click="navLinkClicked" :href="createUser().url" as="button"><li>Create account</li></Link>
+                        <Link v-if="page.props.auth.user" @click="navLinkClicked" :href="createOrder().url" as="button"><li>Make order</li></Link>
+                        <Link v-if="page.props.auth.user" @click="navLinkClicked" :href="indexOrder().url" as="button"><li>My orders</li></Link>
+                        <Link v-if="page.props.auth.user" @click="navLinkClicked" :href="destroyUserSession().url" method="delete"><li>Logout</li></Link>
                     </ul>
                 </div>
             </Transition>
