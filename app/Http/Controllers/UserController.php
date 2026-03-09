@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class UserController extends Controller
@@ -30,7 +31,7 @@ class UserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request = $request->validate([
+        $validated = $request->validate([
            'name' => 'required|max:50',
            'email' => 'required|unique:users,email|max:50',
            'address' => 'required|max:200',
@@ -38,11 +39,17 @@ class UserController extends Controller
         ]);
 
         $user = new User;
-        $user->name = $request['name'];
-        $user->email = $request['email'];
-        $user->address = $request['address'];
-        $user->password = $request['password'];
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->address = $validated['address'];
+        $user->password = $validated['password'];
         $user->save();
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+        }
 
         return redirect('/');
     }
