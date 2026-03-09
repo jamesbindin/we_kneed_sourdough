@@ -239,7 +239,8 @@ withDefaults(
 <script lang="ts">
 import { Link, usePage } from '@inertiajs/vue3';
 import { create as createOrder } from '@/actions/App/Http/Controllers/OrderController';
-import { create  as createUserSession, create as createUser } from '@/actions/App/Http/Controllers/UserSessionController';
+import { create  as createUserSession } from '@/actions/App/Http/Controllers/UserSessionController';
+import { create as createUser } from '@/actions/App/Http/Controllers/UserController';
 
 const page = usePage();
 </script>
